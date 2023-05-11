@@ -1,23 +1,34 @@
 import { Card } from "semantic-ui-react";
 import factory from "../ethereum/factory";
+import Layout from "../components/Layout";
+import { Link } from "../routes";
 
 function CampaignIndex({ campaigns }) {
-  const items = campaigns.map((item) => {
+  const items = campaigns.map((address) => {
     return {
-      header: item,
-      description: <a>View Campaign</a>,
+      header: address,
+      description: (
+        <Link route={`/campaigns/${address}`}>
+          <a class="item">View Campaign</a>
+        </Link>
+      ),
       fluid: true,
     };
   });
 
   return (
-    <div>  <link
-    async
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
-  />
-      <Card.Group items={items} />
-    </div>
+    <Layout>
+      <div>
+        <h3>Open Campaigns</h3>
+        <Link route="/campaigns/new">
+          <button class="ui right floated labeled icon button">
+            <i class="add circle icon"></i>
+            Create Campaign
+          </button>
+        </Link>
+        <Card.Group items={items} />
+      </div>
+    </Layout>
   );
 }
 
