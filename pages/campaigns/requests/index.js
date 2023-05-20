@@ -19,6 +19,7 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
       setErrMsg(err.message);
     }
     setApproveLoading(false);
+    window.location.reload();
   };
   const handleFinalize = async (i) => {
     setFinalizeLoading(true);
@@ -32,6 +33,7 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
       setErrMsg(err.message);
     }
     setFinalizeLoading(false);
+    window.location.reload();
   };
   return (
     <Layout>
@@ -57,8 +59,9 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
         </thead>
         <tbody>
           {requests.map((ele, i) => {
+            console.log("run");
             return (
-              <tr>
+              <tr >
                 <td data-label="ID">{i+1}</td>
                 <td data-label="Description">{ele.description}</td>
                 <td data-label="Amount">
@@ -69,7 +72,7 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
                   {ele.approvalCount}/{approversCount}
                 </td>
                 <td data-label="Approve">
-                  <button
+                  {ele.complete?null:(<button
                     class={
                       approveLoading
                         ? "ui green loading button"
@@ -78,10 +81,10 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
                     onClick={() => handleApprove(i)}
                   >
                     Approve
-                  </button>
+                  </button>)}
                 </td>
                 <td data-label="Finalize">
-                  <button
+                  {ele.complete?null:(<button
                     class={
                       finalizeLoading
                         ? "ui teal loading button"
@@ -90,7 +93,7 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
                     onClick={() => handleFinalize(i)}
                   >
                     Finalize
-                  </button>
+                  </button>)}
                 </td>
               </tr>
             );
@@ -109,7 +112,7 @@ export async function getServerSideProps(props) {
   const requestCount = await campaign.methods.getRequestsCount().call();
   const approversCount = await campaign.methods.approversCount().call();
   const requests = await Promise.all(
-    Array(requestCount)
+    Array(parseInt(requestCount))
       .fill()
       .map(async (element, index) => {
         const request = await campaign.methods.requests(index).call();
