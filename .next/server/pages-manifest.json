@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/campaigns/requests": "pages/campaigns/requests.js",
+  "/campaigns/[address]": "pages/campaigns/[address].js",
+  "/campaigns/[address]/requests/new": "pages/campaigns/[address]/requests/new.js",
   "/": "pages/index.js",
-  "/campaigns/requests/new": "pages/campaigns/requests/new.js",
-  "/campaigns/show": "pages/campaigns/show.js"
+  "/campaigns/[address]/requests": "pages/campaigns/[address]/requests.js"
 }

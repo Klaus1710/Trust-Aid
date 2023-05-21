@@ -30,20 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/campaigns/requests": [
+    "/campaigns/[address]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/campaigns/requests.js"
+      "static/chunks/pages/campaigns/[address].js"
     ],
-    "/campaigns/requests/new": [
+    "/campaigns/[address]/requests": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/campaigns/requests/new.js"
+      "static/chunks/pages/campaigns/[address]/requests.js"
     ],
-    "/campaigns/show": [
+    "/campaigns/[address]/requests/new": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/campaigns/show.js"
+      "static/chunks/pages/campaigns/[address]/requests/new.js"
     ]
   },
   "ampFirstPages": []

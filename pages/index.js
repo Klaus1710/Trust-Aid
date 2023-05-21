@@ -1,14 +1,14 @@
 import { Card } from "semantic-ui-react";
 import factory from "../ethereum/factory";
 import Layout from "../components/Layout";
-import { Link } from "../routes";
+import Link from "next/link";
 
 function CampaignIndex({ campaigns }) {
   const items = campaigns.map((address) => {
     return {
       header: address,
       description: (
-        <Link route={`/campaigns/${address}`}>
+        <Link href={`/campaigns/${address}`}>
           <a class="item">View Campaign</a>
         </Link>
       ),
@@ -20,7 +20,7 @@ function CampaignIndex({ campaigns }) {
     <Layout>
       <div>
         <h3>Open Campaigns</h3>
-        <Link route="/campaigns/new">
+        <Link href="/campaigns/new">
           <button class="ui right floated labeled icon button">
             <i class="add circle icon"></i>
             Create Campaign

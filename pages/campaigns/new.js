@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout";
 import factory from "../../ethereum/factory";
 import web3 from "../../ethereum/web3";
-import {Router} from "../../routes";
+import {useRouter} from "next/router";
 
 function CampaignNew() {
   const [minContri, setMinContri] = useState(0);
   const [errMsg,setErrMsg] = useState('');
   const [loading,setLoading] = useState(false);
+  const router = useRouter();
   const handleChange = (event) => {
     setMinContri(event.target.value);
   };
@@ -19,7 +20,7 @@ function CampaignNew() {
         const accounts = await web3.eth.getAccounts();
         await factory.methods.createCampaign(minContri).send({ from: accounts[0] });
 
-        Router.pushRoute('/');
+        router.push('/');
     }catch(err){
         setErrMsg(err.message);
     }

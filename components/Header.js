@@ -1,15 +1,15 @@
-import { Link } from "../routes";
+import Link from "next/link";
 const Header = () => {
   return (
     <div class="ui menu" style={{ marginTop: "10px" }}>
-      <Link route="/">
+      <Link href="/">
         <a class="item">Fund Raiser</a>
       </Link>
       <div class="right menu">
-        <Link route="/">
+        <Link href="/">
           <a class="item">Campaigns</a>
         </Link>
-        <Link route="/campaigns/new">
+        <Link href="/campaigns/new">
           <a class="item">+</a>
         </Link>
       </div>
