@@ -51,4 +51,4 @@ const ContributeForm = ({ address }) => {
   );
 };
 
-export default ContributeForm;
+export default  ContributeForm;

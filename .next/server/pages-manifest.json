@@ -2,8 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
   "/campaigns/[address]": "pages/campaigns/[address].js",
-  "/": "pages/index.js",
-  "/campaigns/new": "pages/campaigns/new.js"
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
 }

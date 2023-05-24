@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import CampaignInstance from "../../ethereum/campaign";
 import DisplayCard from "../../components/Card";
 import web3 from "../../ethereum/web3";
-import ContributeForm from "../../components/contributeForm";
+import ContributeForm from "../../components/ContributeForm";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import NotAuthenticated from "../NotAuthenticated";
