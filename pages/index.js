@@ -9,7 +9,7 @@ function CampaignIndex({ campaigns }) {
       header: address,
       description: (
         <Link href={`/campaigns/${address}`}>
-          <a class="item">View Campaign</a>
+          <a className="item">View Campaign</a>
         </Link>
       ),
       fluid: true,
@@ -21,8 +21,8 @@ function CampaignIndex({ campaigns }) {
       <div>
         <h3>Open Campaigns</h3>
         <Link href="/campaigns/new">
-          <button class="ui right floated labeled icon button">
-            <i class="add circle icon"></i>
+          <button className="ui right floated labeled icon button">
+            <i className="add circle icon"></i>
             Create Campaign
           </button>
         </Link>

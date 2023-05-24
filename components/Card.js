@@ -1,10 +1,10 @@
 const DisplayCard = ({header,meta,description}) => {
   return (
-    <div class="card" style={{overflowWrap:"break-word"}}>
-      <div class="content">
-        <div class="header">{header}</div>
-        <div class="meta">{meta}</div>
-        <div class="description">{description}</div>
+    <div className="card" style={{overflowWrap:"break-word"}}>
+      <div className="content">
+        <div className="header">{header}</div>
+        <div className="meta">{meta}</div>
+        <div className="description">{description}</div>
       </div>
     </div>
   );

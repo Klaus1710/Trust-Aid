@@ -39,13 +39,13 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
     <Layout>
       <h3>Pending Requests</h3>
       {errMsg && (
-        <div class="ui error message">
-          <i class="close icon" onClick={() => setErrMsg("")}></i>
-          <div class="header">Oops!</div>
+        <div className="ui error message">
+          <i className="close icon" onClick={() => setErrMsg("")}></i>
+          <div className="header">Oops!</div>
           <div>{errMsg}</div>
         </div>
       )}
-      <table class="ui celled table">
+      <table className="ui celled table">
         <thead>
           <tr>
             <th>ID</th>
@@ -73,7 +73,7 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
                 </td>
                 <td data-label="Approve">
                   {ele.complete?null:(<button
-                    class={
+                    className={
                       approveLoading
                         ? "ui green loading button"
                         : "ui green button"
@@ -85,7 +85,7 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
                 </td>
                 <td data-label="Finalize">
                   {ele.complete?null:(<button
-                    class={
+                    className={
                       finalizeLoading
                         ? "ui teal loading button"
                         : "ui teal button"
@@ -101,7 +101,7 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
         </tbody>
       </table>
       <Link href={`/campaigns/${address}/requests/new`}>
-        <button class="ui primary button">Add Requests</button>
+        <button className="ui primary button">Add Requests</button>
       </Link>
     </Layout>
   );

@@ -28,21 +28,21 @@ const ContributeForm = ({ address }) => {
   };
 
   return (
-    <form class={errMsg ? "ui form error" : "ui form"} onSubmit={handleSubmit}>
-      <div class="field">
+    <form className={errMsg ? "ui form error" : "ui form"} onSubmit={handleSubmit}>
+      <div className="field">
         <label>Amount to Contribute</label>
-        <div class="ui right labeled input" style={{ width: "30vw" }}>
+        <div className="ui right labeled input" style={{ width: "30vw" }}>
           <input type="text" value={contri} onChange={handleChange} />
-          <div class="ui basic label">ether</div>
+          <div className="ui basic label">ether</div>
         </div>
       </div>
-      <div class="ui error message">
-        <i class="close icon" onClick={()=>setErrMsg('')}></i>
-        <div class="header">Oops!</div>
+      <div className="ui error message">
+        <i className="close icon" onClick={()=>setErrMsg('')}></i>
+        <div className="header">Oops!</div>
         <div>{errMsg}</div>
       </div>
       <button
-        class={loading ? "ui primary loading button" : "ui primary button"}
+        className={loading ? "ui primary loading button" : "ui primary button"}
         type="submit"
       >
         Contribute!

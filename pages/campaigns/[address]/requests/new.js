@@ -45,12 +45,12 @@ function CampaignNew({ campaignAddress }) {
       </Link>
       <h3>Create a Request</h3>
       <form
-        class={errMsg ? "ui form error" : "ui form"}
+        className={errMsg ? "ui form error" : "ui form"}
         onSubmit={handleSubmit}
       >
-        <div class="field">
+        <div className="field">
           <label>Description</label>
-          <div class="ui input" style={{ width: "40vw" }}>
+          <div className="ui input" style={{ width: "40vw" }}>
             <input
               type="text"
               name="description"
@@ -59,7 +59,7 @@ function CampaignNew({ campaignAddress }) {
             />
           </div>
           <label style={{ marginTop: "20px" }}>Amount in Ether</label>
-          <div class="ui input" style={{ width: "40vw" }}>
+          <div className="ui input" style={{ width: "40vw" }}>
             <input
               type="text"
               name="amount"
@@ -68,7 +68,7 @@ function CampaignNew({ campaignAddress }) {
             />
           </div>
           <label style={{ marginTop: "20px" }}>Recipient</label>
-          <div class="ui input" style={{ width: "40vw" }}>
+          <div className="ui input" style={{ width: "40vw" }}>
             <input
               type="text"
               name="recipient"
@@ -77,13 +77,13 @@ function CampaignNew({ campaignAddress }) {
             />
           </div>
         </div>
-        <div class="ui error message">
-          <i class="close icon"></i>
-          <div class="header">Oops!</div>
+        <div className="ui error message">
+          <i className="close icon"></i>
+          <div className="header">Oops!</div>
           <div>{errMsg}</div>
         </div>
         <button
-          class={loading ? "ui primary loading button" : "ui primary button"}
+          className={loading ? "ui primary loading button" : "ui primary button"}
           type="submit"
         >
           Create!

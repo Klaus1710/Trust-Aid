@@ -2,51 +2,66 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout";
 import factory from "../../ethereum/factory";
 import web3 from "../../ethereum/web3";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import NotAuthenticated from "../NotAuthenticated";
 
 function CampaignNew() {
   const [minContri, setMinContri] = useState(0);
-  const [errMsg,setErrMsg] = useState('');
-  const [loading,setLoading] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
   const handleChange = (event) => {
     setMinContri(event.target.value);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setErrMsg('');
-    try{
-        const accounts = await web3.eth.getAccounts();
-        await factory.methods.createCampaign(minContri).send({ from: accounts[0] });
+    setErrMsg("");
+    try {
+      const accounts = await web3.eth.getAccounts();
+      await factory.methods
+        .createCampaign(minContri)
+        .send({ from: accounts[0] });
 
-        router.push('/');
-    }catch(err){
-        setErrMsg(err.message);
+      router.push("/");
+    } catch (err) {
+      setErrMsg(err.message);
     }
     setLoading(false);
   };
-  return (
-    <Layout>
-      <h3>Create a Campaign</h3>
-      <form class={errMsg?"ui form error":"ui form"} onSubmit={handleSubmit}>
-        <div class="field">
-          <label>Minimum Contribution</label>
-          <div class="ui right labeled input" style={{ width: "50vw" }}>
-            <input type="text" value={minContri} onChange={handleChange} />
-            <div class="ui basic label">wei</div>
+  if (session) {
+    return (
+      <Layout>
+        <h3>Create a Campaign</h3>
+        <form
+          className={errMsg ? "ui form error" : "ui form"}
+          onSubmit={handleSubmit}
+        >
+          <div className="field">
+            <label>Minimum Contribution</label>
+            <div className="ui right labeled input" style={{ width: "50vw" }}>
+              <input type="text" value={minContri} onChange={handleChange} />
+              <div className="ui basic label">wei</div>
+            </div>
           </div>
-        </div>
-        <div class="ui error message">
-          <i class="close icon" onClick={()=>setErrMsg('')}></i>
-          <div class="header">Oops!</div>
-          <div>{errMsg}</div>
-        </div>
-        <button class={loading?"ui primary loading button":"ui primary button"} type="submit">
-          Create!
-        </button>
-      </form>
-    </Layout>
-  );
+          <div className="ui error message">
+            <i className="close icon" onClick={() => setErrMsg("")}></i>
+            <div className="header">Oops!</div>
+            <div>{errMsg}</div>
+          </div>
+          <button
+            className={loading ? "ui primary loading button" : "ui primary button"}
+            type="submit"
+          >
+            Create!
+          </button>
+        </form>
+      </Layout>
+    );
+  } else if (!session) {
+    return <NotAuthenticated />;
+  }
 }
 export default CampaignNew;
