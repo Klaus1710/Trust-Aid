@@ -10,10 +10,17 @@ function CampaignNew() {
   const [minContri, setMinContri] = useState(0);
   const [errMsg, setErrMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState("");
+  const [des, setDes] = useState("");
   const router = useRouter();
   const { data: session } = useSession();
   const handleChange = (event) => {
+    if(event.target.name==="contri")
     setMinContri(event.target.value);
+    else if(event.target.name==="title")
+    setTitle(event.target.value);
+    else if(event.target.name==="des")
+    setDes(event.target.value);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +29,7 @@ function CampaignNew() {
     try {
       const accounts = await web3.eth.getAccounts();
       await factory.methods
-        .createCampaign(minContri)
+        .createCampaign(minContri,title,des)
         .send({ from: accounts[0] });
 
       router.push("/");
@@ -42,8 +49,16 @@ function CampaignNew() {
           <div className="field">
             <label>Minimum Contribution</label>
             <div className="ui right labeled input" style={{ width: "50vw" }}>
-              <input type="text" value={minContri} onChange={handleChange} />
+              <input type="text" name="contri" value={minContri} onChange={handleChange} />
               <div className="ui basic label">wei</div>
+            </div>
+            <label style={{marginTop:"10px"}}>Title</label>
+            <div className="ui input" style={{ width: "50vw" }}>
+              <input type="text" name="title" value={title} onChange={handleChange} />
+            </div>
+            <label style={{marginTop:"10px"}}>Description</label>
+            <div className="ui input" style={{ width: "50vw" }}>
+              <input type="text" name="des" value={des} onChange={handleChange} />
             </div>
           </div>
           <div className="ui error message">

@@ -40,8 +40,8 @@ function CampaignNew({ campaignAddress }) {
   };
   return (
     <Layout>
-      <Link href={`/campaigns/${campaignAddress}/requests`}>
-        <a>Back</a>
+      <Link href={`/campaigns/${campaignAddress}`}>
+        <a>Back to Campaign</a>
       </Link>
       <h3>Create a Request</h3>
       <form
@@ -78,7 +78,7 @@ function CampaignNew({ campaignAddress }) {
           </div>
         </div>
         <div className="ui error message">
-          <i className="close icon"></i>
+          <i className="close icon" onClick={()=>setErrMsg("")}></i>
           <div className="header">Oops!</div>
           <div>{errMsg}</div>
         </div>

@@ -37,6 +37,11 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
   };
   return (
     <Layout>
+      <p>
+        <Link href={`/campaigns/${address}`}>
+          <a>Go back to Campaign</a>
+        </Link>
+      </p>
       <h3>Pending Requests</h3>
       {errMsg && (
         <div className="ui error message">
@@ -61,8 +66,8 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
           {requests.map((ele, i) => {
             console.log("run");
             return (
-              <tr >
-                <td data-label="ID">{i+1}</td>
+              <tr class={ele.complete ? "ui disabled row" : ""}>
+                <td data-label="ID">{i + 1}</td>
                 <td data-label="Description">{ele.description}</td>
                 <td data-label="Amount">
                   {web3.utils.fromWei(ele.value, "ether")}
@@ -72,34 +77,39 @@ const Request = ({ address, requests, requestCount, approversCount }) => {
                   {ele.approvalCount}/{approversCount}
                 </td>
                 <td data-label="Approve">
-                  {ele.complete?null:(<button
-                    className={
-                      approveLoading
-                        ? "ui green loading button"
-                        : "ui green button"
-                    }
-                    onClick={() => handleApprove(i)}
-                  >
-                    Approve
-                  </button>)}
+                  {ele.complete ? null : (
+                    <button
+                      className={
+                        approveLoading
+                          ? "ui green loading button"
+                          : "ui green button"
+                      }
+                      onClick={() => handleApprove(i)}
+                    >
+                      Approve
+                    </button>
+                  )}
                 </td>
                 <td data-label="Finalize">
-                  {ele.complete?null:(<button
-                    className={
-                      finalizeLoading
-                        ? "ui teal loading button"
-                        : "ui teal button"
-                    }
-                    onClick={() => handleFinalize(i)}
-                  >
-                    Finalize
-                  </button>)}
+                  {ele.complete ? null : (
+                    <button
+                      className={
+                        finalizeLoading
+                          ? "ui teal loading button"
+                          : "ui teal button"
+                      }
+                      onClick={() => handleFinalize(i)}
+                    >
+                      Finalize
+                    </button>
+                  )}
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <p>Found {requestCount} Requests</p>
       <Link href={`/campaigns/${address}/requests/new`}>
         <button className="ui primary button">Add Requests</button>
       </Link>
