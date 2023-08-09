@@ -3,8 +3,6 @@ import Layout from "../../components/Layout";
 import factory from "../../ethereum/factory";
 import web3 from "../../ethereum/web3";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
-import NotAuthenticated from "../NotAuthenticated";
 
 function CampaignNew() {
   const [minContri, setMinContri] = useState(0);
@@ -13,7 +11,6 @@ function CampaignNew() {
   const [title, setTitle] = useState("");
   const [des, setDes] = useState("");
   const router = useRouter();
-  const { data: session } = useSession();
   const handleChange = (event) => {
     if(event.target.name==="contri")
     setMinContri(event.target.value);
@@ -38,7 +35,6 @@ function CampaignNew() {
     }
     setLoading(false);
   };
-  if (session) {
     return (
       <Layout>
         <h3>Create a Campaign</h3>
@@ -75,8 +71,5 @@ function CampaignNew() {
         </form>
       </Layout>
     );
-  } else if (!session) {
-    return <NotAuthenticated />;
-  }
 }
 export default CampaignNew;

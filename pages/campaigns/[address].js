@@ -5,12 +5,8 @@ import DisplayCard from "../../components/Card";
 import web3 from "../../ethereum/web3";
 import ContributeForm from "../../components/ContributeForm";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
-import NotAuthenticated from "../NotAuthenticated";
 
 function showcampaign(props) {
-  const { data: session } = useSession();
-  if (session) {
     return (
       <Layout>
         <div>Campaign Show</div>
@@ -64,10 +60,6 @@ function showcampaign(props) {
         </div>
       </Layout>
     );
-  }
-  else if(!session){
-    return <NotAuthenticated/>
-  }
 }
 
 export async function getServerSideProps(props) {
