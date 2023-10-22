@@ -1,16 +1,13 @@
 import Link from "next/link";
 const Header = () => {
   return (
-    <div className="ui menu" style={{ marginTop: "10px" }}>
+    <div className="ui menu" style={{ marginTop: "20px", borderWidth: "3px", borderColor: "black" }}>
       <Link href="/">
-        <a className="item">Fund Raiser</a>
+        <a className="item"><b>Fund Raiser</b></a>
       </Link>
       <div className="right menu">
         <Link href="/">
-          <a className="item">Campaigns</a>
-        </Link>
-        <Link href="/campaigns/new">
-          <a className="item">+</a>
+          <a className="item"><b>Campaigns</b></a>
         </Link>
       </div>
     </div>
