@@ -3,8 +3,8 @@ const Web3 = require('web3');
 const compiledFactory = require('./build/CampaignFactory.json');
 
 const provider = new HDWalletProvider(
-    'print cinnamon rescue volume soup visit pig regular card unable radio end',
-    'https://sepolia.infura.io/v3/7cc9d9a1e9434138b7416d306e91085a'
+    'rebuild young river coil era street asset tackle fuel avocado interest crystal',
+    'https://sepolia.infura.io/v3/ba3893c6a6a44e1a9e7109cb964bfc98'
 );
 const web3 = new Web3(provider);
 
